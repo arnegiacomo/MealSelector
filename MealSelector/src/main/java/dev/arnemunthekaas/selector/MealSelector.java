@@ -52,7 +52,6 @@ public class MealSelector {
 
 	private static MealView roulette(List<Meal> meals) {
 		MealView meal = new MealView(null);
-		// https://www.educative.io/edpresso/how-to-generate-random-numbers-in-java
 		if (meals.size() > 0) {
 			int min = 0;
 			int max = meals.size() - 1;

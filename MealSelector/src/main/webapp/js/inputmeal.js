@@ -1,8 +1,5 @@
 "use strict";
 
-class inputmeal {
-
-}
 let myForm = document.getElementById('inputform');
 let formChanged = false;
 myForm.addEventListener('change', () => formChanged = true);

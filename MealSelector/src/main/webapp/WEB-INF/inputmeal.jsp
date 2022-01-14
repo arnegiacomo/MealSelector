@@ -24,26 +24,24 @@
 				<legend class="p1">Meal Options</legend>
 				<fieldset>
 					<legend class="p1">Name of meal:</legend>
-					<input required type="text" name="name" id="name" value="${nameerror}"
-						placeholder="Fill in name of meal"
+					<input required type="text" name="name" id="name"
+						value="${nameerror}" placeholder="Fill in name of meal"
 						title="Meal must start with a capital letter, and cannot be longer than 100 characters."
 						required pattern="[A-ZÆØÅ][A-ZÆØÅa-zæøå\s]{0,99}" /> <span
 						class="errormessage">${nameerror}</span>
 				</fieldset>
 				<fieldset>
 					<legend class="p1">Meal description:</legend>
-					<input required type="text" name="description" id="description"
-						value="${descriptionerror}"
-						placeholder="Fill in description of meal"
-						title="Description can contain any characters, and cannot be longer than 100000 characters."
-						required pattern=".{0,100000}" /> <span class="errormessage">${descriptionerror}</span>
+					<textarea class="p2" placeholder="Fill in description of meal" required
+						id="description" name="description" rows="5" cols="100"
+						title="Description can contain any characters, and cannot be longer than 100000 characters."></textarea>
+					<span class="errormessage">${descriptionerror}</span>
 				</fieldset>
-				
+
 				<fieldset>
 					<legend class="p1">Meal Type</legend>
 					<select name="type">
-						<option hidden disabled selected value>-- Select an
-							option --</option>
+						<option disabled selected value="">-- Select an option --</option>
 						<option value="Breakfast">Breakfast</option>
 						<option value="Lunch">Lunch</option>
 						<option value="Dinner">Dinner</option>
@@ -53,32 +51,30 @@
 				</fieldset>
 
 				<fieldset>
-					<legend class="p1">Preperation time (maximum minutes)</legend>
-					
-					<input required type="text" name="preptime" id="preptime"
-						value="${preptimeerror}"
-						placeholder="Fill in preperation time of meal"
-						title="Preperation time must only contain numbers"
-						required pattern="[0-9]{0,10000}" /> <span class="errormessage">${preptimeerror}</span>
+					<legend class="p1">Preperation time</legend>
+					<input class="slider" name="preptime" id="preptime" type="range"
+						min="5" max="120" step="5" value="5" >
+					<p>Preptime: <span id="demo"></span> minutes</p>
+					<span class="errormessage">${preptimeerror}</span>
 
 				</fieldset>
-				
+
 				<fieldset>
 					<legend class="p1">URL of recipe:</legend>
-					<input required type="text" name="siteurl" id="siteurl" value="${siteurlerror}"
-						placeholder="Fill in recipe url"
-						title="Must be a valid url"
-						required pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)" /> <span
-						class="errormessage">${siteurlerror}</span> <br>
+					<input required type="text" name="siteurl" id="siteurl"
+						value="${siteurlerror}" placeholder="Fill in recipe url"
+						title="Must be a valid url" required
+						pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)" />
+					<span class="errormessage">${siteurlerror}</span> <br>
 				</fieldset>
-				
+
 				<fieldset>
 					<legend class="p1">URL of image for meal:</legend>
-					<input required type="text" name="imageurl" id="imageurl" value="${imageurlerror}"
-						placeholder="Fill in image url"
-						title="Must be a valid url"
-						required pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)" /> <span
-						class="errormessage">${imageurlerror}</span> <br>
+					<input required type="text" name="imageurl" id="imageurl"
+						value="${imageurlerror}" placeholder="Fill in image url"
+						title="Must be a valid url" required
+						pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)" />
+					<span class="errormessage">${imageurlerror}</span> <br>
 				</fieldset>
 
 				<input type="submit" value="Add meal to database" />
@@ -86,5 +82,15 @@
 			</fieldset>
 		</form>
 	</div>
+
+	<script>
+		var slider = document.getElementById("preptime");
+		var output = document.getElementById("demo");
+		output.innerHTML = slider.value;
+
+		slider.oninput = function() {
+			output.innerHTML = this.value;
+		}
+	</script>
 </body>
 </html>

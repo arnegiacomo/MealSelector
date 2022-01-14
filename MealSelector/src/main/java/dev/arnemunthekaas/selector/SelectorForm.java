@@ -13,21 +13,8 @@ public class SelectorForm {
 		HttpSession session = request.getSession(true);
 		this.type = request.getParameter("type");
 		String preptimeinput = request.getParameter("preptime");
-
 		if (preptimeinput != null) {
-			if (preptimeinput.equals("1"))
-				preptime = 15;
-			if (preptimeinput.equals("2"))
-				preptime = 30;
-			if (preptimeinput.equals("3"))
-				preptime = 45;
-			if (preptimeinput.equals("4"))
-				preptime = 60;
-			if (preptimeinput.equals("5"))
-				preptime = 90;
-			if (preptimeinput.equals("6"))
-				preptime = Integer.MAX_VALUE;
-
+			this.preptime = Integer.parseInt(preptimeinput);
 		}
 		
 		session.setAttribute("form", this);

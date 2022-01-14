@@ -5,8 +5,6 @@
 <html>
 <head>
 <link href="main.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet"
-	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
 <meta charset="UTF-8">
 <title>MealSelector: Database</title>
 <style>
@@ -27,13 +25,14 @@ table.center {
 		<h1 class="p1">All meals</h1>
 		<a class="p1" href="inputmeal">Add new meal to database</a>
 		<br>
-		<table class="pure-table center">
+		<br>
+		<table class="table">
 			<tr bgcolor="#cccccc">
-				<th class="p1" align="center">Name</th>
-				<th class="p1" align="center">Type</th>
-				<th class="p1" align="center">Prep time</th>
-				<th class="p1" align="center">Page</th>
-				<th class="p1" align="center">Recipe url</th>
+				<th class="p1" align="center"> Name </th>
+				<th class="p1" align="center"> Type </th>
+				<th class="p1" align="center"> Prep time </th>
+				<th class="p1" align="center"> Page </th>
+				<th class="p1" align="center"> Recipe url </th>
 			</tr>
 
 			<c:forEach items='${requestScope["meals"]}' var="meal">

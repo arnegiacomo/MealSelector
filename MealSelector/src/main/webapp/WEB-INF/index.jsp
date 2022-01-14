@@ -34,15 +34,11 @@
 					</select>
 				</fieldset>
 				<fieldset>
-					<legend class="p1">Preperation time (maximum minutes)</legend>
-					<p>
-						<input type="radio" name="preptime" value="1" /> 15 <input
-							type="radio" name="preptime" value="2" />30 <input type="radio"
-							name="preptime" value="3" />45 <input type="radio"
-							name="preptime" value="4" />60 <input type="radio"
-							name="preptime" value="5" />90 <input type="radio"
-							name="preptime" value="6" />90+
-					</p>
+					<legend class="p1">Preperation time</legend>
+					<input class="slider" name="preptime" id="preptime" type="range"
+						min="5" max="120" step="5" value="5" >
+					<p>Preptime: <span id="demo"></span> minutes</p>
+
 				</fieldset>
 				<p>
 					<input type="submit" value="Narrow down your search" />
@@ -50,5 +46,15 @@
 			</fieldset>
 		</form>
 	</div>
+	
+	<script>
+		var slider = document.getElementById("preptime");
+		var output = document.getElementById("demo");
+		output.innerHTML = slider.value;
+
+		slider.oninput = function() {
+			output.innerHTML = this.value;
+		}
+	</script>
 </body>
 </html>

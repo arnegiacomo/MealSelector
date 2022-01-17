@@ -11,7 +11,7 @@ Technologies used:
 
 Tools:
 - Eclipse EE
-- pgAdmin
+- pgAdmin 4
 - Apache TomEE (Tomcat v9.0)
 
 # Build 0.3 Demo 🔨

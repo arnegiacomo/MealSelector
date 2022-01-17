@@ -6,13 +6,13 @@ Technologies used:
 - HTML
 - CSS
 - JavaScript
-- Java
+- Java (JDK 12)
 - PostgreSQL
 
 Tools:
 - Eclipse EE
 - pgAdmin
-- Apache TomEE
+- Apache TomEE (Tomcat v9.0)
 
 # Build 0.3 Demo 🔨
 https://www.youtube.com/watch?v=DtAr-KCjrM0

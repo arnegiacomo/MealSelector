@@ -27,7 +27,6 @@ public class AboutServlet extends HttpServlet {
 		request.setAttribute("meal", new MealView(mealDAO, request));
 		request.getRequestDispatcher("WEB-INF/viewmeal.jsp")
  		.forward(request, response);
-		// DETTE ER EN KOMMENTAR!
 	}
 
 }

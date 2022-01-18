@@ -34,5 +34,6 @@
 		<p class="p1">${meal.getDescription()}</p>
 		<p class="p1"><a href="${meal.getSiteurl()}">Recipe</a></p>
 	</div>
+	
 </body>
 </html>

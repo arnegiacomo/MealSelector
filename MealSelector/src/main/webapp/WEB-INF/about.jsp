@@ -13,7 +13,6 @@
 		<a href="index">Home</a> <a href="database">Database</a> <a class="active" href="about">About</a> 
 	</div>
 	<div class="bg-image"></div>
-	
 	<div class="bg-text">
 		<h3>What is MealSelector?</h3>
 		<p>This is a tool for easy meal selection. It filters a database of recipies with a set of optional input

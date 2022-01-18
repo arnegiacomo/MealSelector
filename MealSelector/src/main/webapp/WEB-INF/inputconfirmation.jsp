@@ -15,11 +15,12 @@
 	<div class="bg-image"></div>
 	
 	<div class="bg-text">
-		<p>${confirmedmeal} has been succsessfully added to the database!</p>
+		<p>${confirmedmeal} has been successfully added to the database!</p>
 	</div>
 	
 	<br>
 	
 	<a href="index" class="p1">Return to home</a>
+	
 </body>
 </html>

@@ -13,7 +13,7 @@
 		 <a href="about">About</a>
 	</div>
 	<div class="bg-image"></div>
-
+	
 	<div class="bg-text">
 		<h1 class="p1">MealSelector</h1>
 		<a href="selector" class="p1">Random meal</a> <br /> <br />

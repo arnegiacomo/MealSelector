@@ -20,7 +20,7 @@ table.center {
 		<a href="about">About</a>
 	</div>
 	<div class="bg-image"></div>
-
+	
 	<div class="bg-text">
 		<h1 class="p1">All meals</h1>
 		<a class="p1" href="inputmeal">Add new meal to database</a>

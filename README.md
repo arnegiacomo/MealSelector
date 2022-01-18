@@ -15,6 +15,7 @@ Tools:
 - Apache TomEE (Tomcat v9.0)
 
 # Build 0.3 Demo 🔨
+(A little outdated)
 https://www.youtube.com/watch?v=DtAr-KCjrM0
 
 # Future plans / Vision 🚀

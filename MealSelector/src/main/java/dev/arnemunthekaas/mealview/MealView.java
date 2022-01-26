@@ -2,8 +2,10 @@ package dev.arnemunthekaas.mealview;
 
 import javax.servlet.http.HttpServletRequest;
 
-import dev.arnemunthekaas.DB.Meal;
-import dev.arnemunthekaas.DB.MealDAO;
+import dev.arnemunthekaas.DB.DAO.MealDAO;
+import dev.arnemunthekaas.DB.DAO.MealrelationsDAO;
+import dev.arnemunthekaas.DB.entity.Meal;
+import dev.arnemunthekaas.DB.entity.Mealrelations;
 
 public class MealView {
 
@@ -11,11 +13,12 @@ public class MealView {
 	private String imageurl;
 	private String description;
 	private String type;
+	private String cuisine;
 	private String siteurl;
 	private Integer preptime;
 	private int ID;
 
-	public MealView(Meal meal) {
+	public MealView(Meal meal, Mealrelations mealrelations) {
 		if (meal == null) {
 			this.name = "No meal found. Please try again with other criteria!";
 			this.imageurl = "https://www.apa.org/images/sad-title-image_tcm7-179953.jpg";
@@ -23,24 +26,28 @@ public class MealView {
 			this.name = meal.getName();
 			this.imageurl = meal.getImageurl();
 			this.description = meal.getDescription();
-			this.type = meal.getType();
+			this.type = mealrelations.getType().getName();
+			this.cuisine = mealrelations.getCuisine().getName();
 			this.siteurl = meal.getSiteurl();
 			this.preptime = meal.getPreptime();
 			this.ID = meal.getID();
 		}
 	}
 
-	public MealView(MealDAO mealDAO, HttpServletRequest request) {
+	public MealView(MealDAO mealDAO, HttpServletRequest request, MealrelationsDAO mealrelationDAO) {
 		try {
 			int ID = Integer.parseInt(request.getParameter("ID"));
 			Meal meal = mealDAO.find(ID);
 			this.name = meal.getName();
 			this.imageurl = meal.getImageurl();
 			this.description = meal.getDescription();
-			this.type = meal.getType();
 			this.siteurl = meal.getSiteurl();
 			this.preptime = meal.getPreptime();
 			this.ID = meal.getID();
+			
+			Mealrelations mealrelations = mealrelationDAO.find(meal);
+			this.type = mealrelations.getType().getName();
+			this.cuisine = mealrelations.getCuisine().getName();
 		} catch (Exception e) {
 			this.name = "No meal found. Please try again with other criteria!";
 			this.imageurl = "https://www.apa.org/images/sad-title-image_tcm7-179953.jpg";
@@ -99,10 +106,24 @@ public class MealView {
 		return ID;
 	}
 
+	public String getCuisine() {
+		return cuisine;
+	}
+
+	public void setCuisine(String cuisine) {
+		this.cuisine = cuisine;
+	}
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
 	@Override
 	public String toString() {
-		return "Mealview [name=" + name + ", imageurl=" + imageurl + ", description=" + description + ", type=" + type
-				+ ", siteurl=" + siteurl + ", preptime=" + preptime + "]";
+		return "MealView [name=" + name + ", imageurl=" + imageurl + ", description=" + description + ", type=" + type
+				+ ", cuisine=" + cuisine + ", siteurl=" + siteurl + ", preptime=" + preptime + ", ID=" + ID + "]";
 	}
+
+	
 
 }

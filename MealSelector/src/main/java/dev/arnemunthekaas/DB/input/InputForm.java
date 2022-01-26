@@ -8,14 +8,16 @@ public class InputForm {
 	
 	private String name;
 	private String description;
-	private String type;
+	private String typeSTR;
+	private String cuisineSTR;
 	private Integer preptime;
 	private String siteurl;
 	private String imageurl;
 
 	public InputForm(HttpServletRequest request) {
 		this.name = StringEscapeUtils.escapeHtml4((request.getParameter("name")));
-		this.type = StringEscapeUtils.escapeHtml4(request.getParameter("type"));
+		this.typeSTR = StringEscapeUtils.escapeHtml4(request.getParameter("type"));
+		this.cuisineSTR = StringEscapeUtils.escapeHtml4(request.getParameter("cuisine"));
 		String preptimeinput = request.getParameter("preptime");
 		this.description = StringEscapeUtils.escapeHtml4(request.getParameter("description"));
 		this.preptime = Integer.parseInt(preptimeinput);
@@ -37,14 +39,6 @@ public class InputForm {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 	public Integer getPreptime() {
@@ -71,12 +65,29 @@ public class InputForm {
 		this.imageurl = imageurl;
 	}
 
+	public String getTypeSTR() {
+		return typeSTR;
+	}
+
+	public void setTypeSTR(String typeSTR) {
+		this.typeSTR = typeSTR;
+	}
+
+	public String getCuisineSTR() {
+		return cuisineSTR;
+	}
+
+	public void setCuisineSTR(String cuisineSTR) {
+		this.cuisineSTR = cuisineSTR;
+	}
+
 	@Override
 	public String toString() {
-		return "InputForm [name=" + name + ", description=" + description + ", type=" + type + ", preptime=" + preptime
-				+ ", siteurl=" + siteurl + ", imageurl=" + imageurl + "]";
+		return "InputForm [name=" + name + ", description=" + description + ", typeSTR=" + typeSTR + ", cuisineSTR="
+				+ cuisineSTR + ", preptime=" + preptime + ", siteurl=" + siteurl + ", imageurl=" + imageurl + "]";
 	}
-	
+
+
 	
 	
 }

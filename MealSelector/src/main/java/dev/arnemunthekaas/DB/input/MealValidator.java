@@ -5,9 +5,17 @@ public class MealValidator {
 
 	//TODO Simple validator to check for null values, only real validation comes from regex in inputmeal.js
 	public static boolean validate(InputForm iForm) {
-		return validName(iForm.getName()) && validDescription(iForm.getDescription()) && validType(iForm.getType()) && validPreptime(iForm.getPreptime()) && validSiteURL(iForm.getSiteurl()) && validImageURL(iForm.getImageurl());
+		return validName(iForm.getName()) && validDescription(iForm.getDescription()) && validType(iForm.getTypeSTR()) && validCuisine(iForm.getCuisineSTR()) && validPreptime(iForm.getPreptime()) && validSiteURL(iForm.getSiteurl()) && validImageURL(iForm.getImageurl());
 	}
 	
+	private static boolean validCuisine(String cuisineSTR) {
+		if (cuisineSTR == null) 
+			return false;
+		//TODO
+		
+		return true;
+	}
+
 	private static boolean validName(String name) {
 		if (name == null) 
 			return false;

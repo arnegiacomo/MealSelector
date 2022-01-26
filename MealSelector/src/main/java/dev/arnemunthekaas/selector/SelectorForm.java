@@ -7,6 +7,7 @@ public class SelectorForm {
 
 	private String type;
 	private Integer preptime;
+	private String cuisine;
 
 	public SelectorForm(HttpServletRequest request) {
 		
@@ -16,7 +17,7 @@ public class SelectorForm {
 		if (preptimeinput != null) {
 			this.preptime = Integer.parseInt(preptimeinput);
 		}
-		
+		this.cuisine = request.getParameter("cuisine");
 		session.setAttribute("form", this);
 	}
 
@@ -35,5 +36,19 @@ public class SelectorForm {
 	public void setPreptime(int preptime) {
 		this.preptime = preptime;
 	}
+
+	public String getCuisine() {
+		return cuisine;
+	}
+
+	public void setCuisine(String cuisine) {
+		this.cuisine = cuisine;
+	}
+
+	public void setPreptime(Integer preptime) {
+		this.preptime = preptime;
+	}
+
+	
 
 }

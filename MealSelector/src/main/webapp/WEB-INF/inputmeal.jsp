@@ -7,7 +7,9 @@
 <link href="main.css" rel="stylesheet" type="text/css" />
 <meta charset="UTF-8">
 <title>MealSelector: Add meal</title>
-<script src="js/inputmeal.js" defer></script>
+<script src="js/dropdown.js" defer></script>
+<script src="js/unfinishedchanges.js" defer></script>
+<script src="js/preptimeslider.js" defer></script>
 </head>
 <body>
 	<div class="topnav">
@@ -39,15 +41,40 @@
 				</fieldset>
 
 				<fieldset>
-					<legend class="p1">Meal Type</legend>
-					<select name="type">
-						<option disabled selected value="">-- Select an option --</option>
-						<option value="Breakfast">Breakfast</option>
-						<option value="Lunch">Lunch</option>
-						<option value="Dinner">Dinner</option>
-						<option value="Snacks">Snacks</option>
-						<option value="Other">Other</option>
-					</select>
+					<legend class="p1">Type</legend>
+					<div class="dropdown">
+						<button id="typeButton" type="button" onclick="showDropdownt()"
+							class="dropbtn">Choose Type</button>
+						<div id="typeDropdown" class="dropdown-content">
+							<input type="text" placeholder="Search.." id="typeInput"
+								onkeyup="filterFunctiont()">
+
+							<c:forEach items='${requestScope["types"]}' var="type">
+								<a id="${type.getName()}" onclick="hideDropdownt(this.id)">${type.getName()}</a>
+							</c:forEach>
+
+						</div>
+					</div>
+					<input type="hidden" id="type" name="type" />
+				</fieldset>
+				
+				<fieldset>
+						<legend class="p1">Cuisine</legend>
+						<div class="dropdown">
+							<button id="cuisineButton" type="button" onclick="showDropdown()"
+								class="dropbtn">Choose Cuisine</button>
+							<div id="myDropdown" class="dropdown-content">
+								<input type="text" placeholder="Search.." id="cuisineInput"
+									onkeyup="filterFunction()"> 
+									
+								<c:forEach items='${requestScope["cuisines"]}' var="cuisine">
+									<a id="${cuisine.getName()}" onclick="hideDropdown(this.id)">${cuisine.getName()}</a>
+								</c:forEach>
+
+							</div>
+						</div>
+						<input type="hidden" id="cuisine" name="cuisine" />
+					</fieldset>
 				</fieldset>
 
 				<fieldset>
@@ -82,15 +109,5 @@
 			</fieldset>
 		</form>
 	</div>
-
-	<script>
-		var slider = document.getElementById("preptime");
-		var output = document.getElementById("demo");
-		output.innerHTML = slider.value;
-
-		slider.oninput = function() {
-			output.innerHTML = this.value;
-		}
-	</script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package dev.arnemunthekaas.DB;
+package dev.arnemunthekaas.DB.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +15,6 @@ public class Meal {
 	private Integer ID;
 	private String name;
 	private String description;
-	private String type;
 	private Integer preptime;
 	private String siteurl;
 	private String imageurl;
@@ -30,14 +29,6 @@ public class Meal {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 	public Integer getPreptime() {
@@ -74,7 +65,7 @@ public class Meal {
 
 	@Override
 	public String toString() {
-		return "Meal [ID=" + ID + ", name=" + name + ", description=" + description + ", type=" + type + ", preptime="
+		return "Meal [ID=" + ID + ", name=" + name + ", description=" + description + ", preptime="
 				+ preptime + ", siteurl=" + siteurl + ", imageurl=" + imageurl + "]";
 	}
 

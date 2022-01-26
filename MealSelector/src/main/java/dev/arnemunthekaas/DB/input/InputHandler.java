@@ -1,43 +1,59 @@
 package dev.arnemunthekaas.DB.input;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import dev.arnemunthekaas.DB.Meal;
-import dev.arnemunthekaas.DB.MealDAO;
+import dev.arnemunthekaas.DB.DAO.CuisineDAO;
+import dev.arnemunthekaas.DB.DAO.MealDAO;
+import dev.arnemunthekaas.DB.DAO.MealrelationsDAO;
+import dev.arnemunthekaas.DB.DAO.TypeDAO;
+import dev.arnemunthekaas.DB.entity.Meal;
+import dev.arnemunthekaas.DB.entity.Mealrelations;
 
 public class InputHandler {
 
 	private MealDAO mealDAO;
+	private CuisineDAO cuisineDAO;
+	private TypeDAO typeDAO;
+	private MealrelationsDAO mealrelationsDAO;
 	private HttpServletRequest req;
-	private HttpServletResponse resp;
 	private InputForm iForm;
 	
-	public InputHandler(MealDAO mealDAO, HttpServletRequest req, HttpServletResponse resp) {
-		this.mealDAO = mealDAO;
-		this.req = req;
-		this.resp = resp;
-	}
 	
+
+	public InputHandler(MealDAO mealDAO, CuisineDAO cuisineDAO, TypeDAO typeDAO, MealrelationsDAO mealrelationsDAO,
+			HttpServletRequest req) {
+		this.mealDAO = mealDAO;
+		this.cuisineDAO = cuisineDAO;
+		this.typeDAO = typeDAO;
+		this.mealrelationsDAO = mealrelationsDAO;
+		this.req = req;
+	}
+
+
+
 	public void start() {
 		this.iForm = new InputForm(req);
 		
 		if(!MealValidator.validate(iForm)) {
-			// Handle server side errors. Unimplemented, only simple back end validation 
+			// Handle server side errors. Unimplemented, only simple front end validation 
 		}
 		
 		Meal meal = new Meal();
 		meal.setName(iForm.getName());
-		meal.setType(iForm.getType());
 		meal.setDescription(iForm.getDescription());
 		meal.setPreptime(iForm.getPreptime());
 		meal.setSiteurl(iForm.getSiteurl());
 		meal.setImageurl(iForm.getImageurl());
 		
-		mealDAO.addMeal(meal);
+		Mealrelations mealrelations = new Mealrelations();
+		mealrelations.setMeal(meal);
+		mealrelations.setType(typeDAO.find(iForm.getTypeSTR()));
+		mealrelations.setCuisine(cuisineDAO.find(iForm.getCuisineSTR()));
 		
-		if(mealDAO.find(meal.getID()) != null)
-		req.setAttribute("confirmedmeal", meal.toString());
+		mealDAO.addMeal(meal);
+		mealrelationsDAO.addRelation(mealrelations);
+
+		req.setAttribute("confirmedmeal", meal.toString() + "\n" + mealrelations.toString());
 	}
 	
 	

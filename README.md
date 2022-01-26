@@ -23,6 +23,7 @@ https://www.youtube.com/watch?v=DtAr-KCjrM0
 - Nicer visuals
 - More functionality
 - Expanded database
+- Ease of use
 
 # Contact me 👋
 - Email: arnegiacomo@gmail.com

@@ -36,11 +36,6 @@
 		<p class="p1"><a href="${meal.getSiteurl()}">Recipe</a></p>
 		<p> <a class="p1" href="selector">(Same options)</a>   <a
 			class="p1" href="index">(Other options)</a>   
-			<form action="database" method="post">
-			<a class="p1"
-			href="database">(All results)</a>
-			</form>
-		
 	</div>
 </body>
 </html>

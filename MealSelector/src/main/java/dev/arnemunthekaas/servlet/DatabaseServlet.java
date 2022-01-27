@@ -25,10 +25,7 @@ public class DatabaseServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("meals", MealSelector.getAllFilteredMealViews(mealrelationsDAO, request));
-		
-		request.getRequestDispatcher("WEB-INF/database.jsp")
- 		.forward(request, response);
+		doGet(request, response);
 	}
 
 }

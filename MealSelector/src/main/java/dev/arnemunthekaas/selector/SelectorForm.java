@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 public class SelectorForm {
 
+	private Long systime;
 	private String type;
 	private Integer preptime;
 	private String cuisine;
@@ -12,6 +13,7 @@ public class SelectorForm {
 	public SelectorForm(HttpServletRequest request) {
 		
 		HttpSession session = request.getSession(true);
+		this.systime = System.currentTimeMillis();
 		this.type = request.getParameter("type");
 		String preptimeinput = request.getParameter("preptime");
 		if (preptimeinput != null) {
@@ -48,6 +50,16 @@ public class SelectorForm {
 	public void setPreptime(Integer preptime) {
 		this.preptime = preptime;
 	}
+
+	public Long getSystime() {
+		return systime;
+	}
+
+	public void setSystime(Long systime) {
+		this.systime = systime;
+	}
+	
+	
 
 	
 

@@ -25,8 +25,12 @@ public class MealrelationsDAO {
 	}
 	
 	public Mealrelations find(Meal meal) {
+		return find(meal.getID());
+	}
+
+	public Mealrelations find(int ID) {
 		for(Mealrelations x : getAll()) {
-			if(x.getMeal().getID() == meal.getID())
+			if(x.getMeal().getID() == ID)
 				return x;
 		}
 		return null;

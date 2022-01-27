@@ -15,68 +15,31 @@ import dev.arnemunthekaas.mealview.MealView;
 
 public class MealSelector {
 
-	// Random meal with specified search criteria
-	public static MealView roulette(MealDAO mealDAO, HttpServletRequest req, MealrelationsDAO mealrelationsDAO) {
+	public static MealView select(MealrelationsDAO mealrelationsDAO, HttpServletRequest req) {
 		HttpSession session = req.getSession(false);
 		if (session.getAttribute("form") == null)
-			return roulette(mealDAO, new SelectorForm(req), mealrelationsDAO);
+			return roulette(mealrelationsDAO);
 
-		MealView roulette = roulette(mealDAO, (SelectorForm) session.getAttribute("form"), mealrelationsDAO);
-		MealView currentmeal = (MealView) session.getAttribute("currentmeal");
-		if (currentmeal != null) {
-			while (currentmeal.getID() == roulette.getID() && allThatMatch(mealDAO, req, mealrelationsDAO).size() > 1) {
-				roulette = roulette(mealDAO, (SelectorForm) session.getAttribute("form"), mealrelationsDAO);
+		MealView meal = roulette(mealrelationsDAO, req);
+		MealView lastmeal = (MealView) session.getAttribute("currentmeal");
+		
+		if (lastmeal != null) {
+			while (lastmeal.getID() == meal.getID() && getAllFilteredMealViews(mealrelationsDAO, req).size() > 1) {
+				roulette(mealrelationsDAO, req);
 			}
 		}
-		session.setAttribute("currentmeal", roulette);
-		return roulette;
-	}
-
-	public static List<MealView> allThatMatch(MealDAO mealDAO, HttpServletRequest req,
-			MealrelationsDAO mealrelationsDAO) {
-		HttpSession session = req.getSession(false);
-		if (session.getAttribute("form") == null)
-			return allThatMatch(mealDAO, new SelectorForm(req), mealrelationsDAO);
-		return allThatMatch(mealDAO, (SelectorForm) session.getAttribute("form"), mealrelationsDAO);
-	}
-
-	private static List<MealView> allThatMatch(MealDAO mealDAO, SelectorForm selectorForm,
-			MealrelationsDAO mealrelationsDAO) {
-		List<Meal> meals = filterMeals(mealDAO, selectorForm, mealrelationsDAO);
-
-		List<MealView> mealviews = new ArrayList<MealView>();
 		
-		for (Meal m : meals) {
-			mealviews.add(new MealView(m, mealrelationsDAO.find(m)));
-		}
-		
-		return mealviews;
-	}
-
-	private static MealView roulette(MealDAO mealDAO, SelectorForm selectorForm, MealrelationsDAO mealrelationsDAO) {
-		return roulette(filterMeals(mealDAO, selectorForm, mealrelationsDAO), mealrelationsDAO);
-	}
-
-	private static MealView roulette(List<Meal> meals, MealrelationsDAO mealrelationsDAO) {
-		MealView meal = new MealView(null, null);
-		if (meals.size() > 0) {
-			int min = 0;
-			int max = meals.size() - 1;
-			int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
-
-			try {
-				meal = new MealView(meals.get(random_int), mealrelationsDAO.find(meals.get(random_int)));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+		session.setAttribute("currentmeal", meal);
 		return meal;
 	}
 
-	private static List<Meal> filterMeals(MealDAO mealDAO, SelectorForm selectorForm,
-			MealrelationsDAO mealrelationsDAO) {
-		List<Meal> meals = mealDAO.getAll();
-		List<Mealrelations> mealrelations = mealrelationsDAO.getAll();
+	private static List<MealView> filter(List<MealView> list, HttpServletRequest req) {
+		SelectorForm form = (SelectorForm) req.getAttribute("form");
+		return(filter(list, form));
+	}
+
+
+	private static List<MealView> filter(List<MealView> views, SelectorForm selectorForm) {
 
 //		// filter by type
 //		String type = selectorForm.getType();
@@ -105,8 +68,45 @@ public class MealSelector {
 //		System.out.println(type);
 //		
 
-		return meals;
+		return null;
 
+	}
+	
+	public static List<MealView> getAllMealViews(MealrelationsDAO relations) {
+		return getAllMealViews(relations.getAll());
+	}
+	
+	public static List<MealView> getAllFilteredMealViews(MealrelationsDAO relations, HttpServletRequest req) {
+		return filter(getAllMealViews(relations), req);
+	}
+
+	private static List<MealView> getAllMealViews(List<Mealrelations> relations) {
+		List<MealView> views = new ArrayList<MealView>();
+		
+		relations.forEach(r -> views.add(new MealView(r)));
+		
+		return views;
+	}
+	
+	private static MealView roulette(MealrelationsDAO mealrelationsDAO) {
+		return roulette(getAllMealViews(mealrelationsDAO));
+	}
+	
+	private static MealView roulette(MealrelationsDAO mealrelationsDAO, HttpServletRequest req) {
+		return roulette((getAllFilteredMealViews(mealrelationsDAO, req)));
+	}
+
+	
+	private static MealView roulette(List<MealView> meals) {
+		MealView meal = new MealView(null);
+		if (meals.size() > 0) {
+			int min = 0;
+			int max = meals.size() - 1;
+			int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
+
+			meal = meals.get(random_int);
+		}
+		return meal;
 	}
 
 }

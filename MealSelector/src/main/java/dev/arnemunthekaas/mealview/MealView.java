@@ -18,34 +18,32 @@ public class MealView {
 	private Integer preptime;
 	private int ID;
 
-	public MealView(Meal meal, Mealrelations mealrelations) {
-		if (meal == null) {
+	public MealView(Mealrelations mealrelations) {
+		if (mealrelations == null) {
 			this.name = "No meal found. Please try again with other criteria!";
 			this.imageurl = "https://www.apa.org/images/sad-title-image_tcm7-179953.jpg";
 		} else {
-			this.name = meal.getName();
-			this.imageurl = meal.getImageurl();
-			this.description = meal.getDescription();
+			this.name = mealrelations.getMeal().getName();
+			this.imageurl = mealrelations.getMeal().getImageurl();
+			this.description = mealrelations.getMeal().getDescription();
 			this.type = mealrelations.getType().getName();
 			this.cuisine = mealrelations.getCuisine().getName();
-			this.siteurl = meal.getSiteurl();
-			this.preptime = meal.getPreptime();
-			this.ID = meal.getID();
+			this.siteurl = mealrelations.getMeal().getSiteurl();
+			this.preptime = mealrelations.getMeal().getPreptime();
+			this.ID = mealrelations.getMeal().getID();
 		}
 	}
 
-	public MealView(MealDAO mealDAO, HttpServletRequest request, MealrelationsDAO mealrelationDAO) {
+	public MealView(HttpServletRequest request, MealrelationsDAO mealrelationDAO) {
 		try {
 			int ID = Integer.parseInt(request.getParameter("ID"));
-			Meal meal = mealDAO.find(ID);
-			this.name = meal.getName();
-			this.imageurl = meal.getImageurl();
-			this.description = meal.getDescription();
-			this.siteurl = meal.getSiteurl();
-			this.preptime = meal.getPreptime();
-			this.ID = meal.getID();
-			
-			Mealrelations mealrelations = mealrelationDAO.find(meal);
+			Mealrelations mealrelations = mealrelationDAO.find(ID);
+			this.name = mealrelations.getMeal().getName();
+			this.imageurl = mealrelations.getMeal().getImageurl();
+			this.description = mealrelations.getMeal().getDescription();
+			this.siteurl = mealrelations.getMeal().getSiteurl();
+			this.preptime = mealrelations.getMeal().getPreptime();
+			this.ID = mealrelations.getMeal().getID();
 			this.type = mealrelations.getType().getName();
 			this.cuisine = mealrelations.getCuisine().getName();
 		} catch (Exception e) {

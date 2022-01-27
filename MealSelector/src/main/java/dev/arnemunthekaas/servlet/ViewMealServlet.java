@@ -33,7 +33,7 @@ public class ViewMealServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("meal", new MealView(mealDAO, request, mealrelationsDAO));
+		request.setAttribute("meal", new MealView(request, mealrelationsDAO));
 		request.getRequestDispatcher("WEB-INF/viewmeal.jsp")
  		.forward(request, response);
 	}

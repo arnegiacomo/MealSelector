@@ -18,21 +18,20 @@ import dev.arnemunthekaas.selector.MealSelector;
 public class SelectorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@EJB
-	private MealDAO mealDAO;
-	@EJB
 	private MealrelationsDAO mealrelationsDAO;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MealView mealview = (MealView) request.getAttribute("currentmeal");
+		MealView mealview = (MealView) request.getAttribute("lastmeal");
 		request.setAttribute("meal", mealview);
+		
 		if(mealview == null)
-			request.setAttribute("meal", MealSelector.roulette(mealDAO, request, mealrelationsDAO));
+			request.setAttribute("meal", MealSelector.select(mealrelationsDAO, request));
 		request.getRequestDispatcher("WEB-INF/selector.jsp")
  		.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("meal", MealSelector.roulette(mealDAO, request, mealrelationsDAO));
+		request.setAttribute("meal", MealSelector.select(mealrelationsDAO, request));
 		request.getRequestDispatcher("WEB-INF/selector.jsp")
  		.forward(request, response);
 	}

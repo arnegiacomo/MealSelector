@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dev.arnemunthekaas.DB.DAO.MealrelationsDAO;
-import dev.arnemunthekaas.mealview.MealView;
 import dev.arnemunthekaas.selector.MealSelector;
 import dev.arnemunthekaas.selector.SelectorForm;
 

@@ -14,24 +14,30 @@ import dev.arnemunthekaas.mealview.MealView;
 public class MealSelector {
 
 	public static MealView select(MealrelationsDAO mealrelationsDAO, HttpServletRequest req) {
-		HttpSession session = req.getSession(false);
-		MealView lastmeal = (MealView) session.getAttribute("lastmeal");
-		SelectorForm form = (SelectorForm) session.getAttribute("form");
-		MealView meal = new MealView(null);
-		
-		if (form != null) {
-			meal = select(mealrelationsDAO, form);
+		try {
+			HttpSession session = req.getSession(false);
+			MealView lastmeal = (MealView) session.getAttribute("lastmeal");
+			SelectorForm form = (SelectorForm) session.getAttribute("form");
+			MealView meal = new MealView(null);
 			
-			while(lastmeal != null && lastmeal.getID() == meal.getID() && filter(getAllMealViews(mealrelationsDAO), form).size() > 1) {
+			if (form != null) {
 				meal = select(mealrelationsDAO, form);
+				
+				while(lastmeal != null && lastmeal.getID() == meal.getID() && filter(getAllMealViews(mealrelationsDAO), form).size() > 1) {
+					meal = select(mealrelationsDAO, form);
+				}
+				
+			} else {
+				meal = roulette(mealrelationsDAO, req);
 			}
 			
-		} else {
-			meal = roulette(mealrelationsDAO, req);
+			session.setAttribute("lastmeal", meal);
+			return meal;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		session.setAttribute("lastmeal", meal);
-		return meal;
+		return null;
 	}
 	
 	public static MealView select(MealrelationsDAO mealrelationsDAO, SelectorForm form) {

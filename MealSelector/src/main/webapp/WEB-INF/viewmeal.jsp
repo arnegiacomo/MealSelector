@@ -20,6 +20,10 @@
 	
 	<div class="bg-text">
 	
+		<form action="database" method="post">
+			<input name="viewpage" class="p1" type="submit" value="Back" />
+		</form>
+	
 		<h1 class="p1">${meal.getName()}</h1>
 		<h3 class="p1">${meal.getType()}</h3>
 		<p class="p1">${meal.getDescription()}</p>

@@ -53,6 +53,7 @@ public class InputHandler {
 		mealrelationsDAO.addRelation(mealrelations);
 
 		req.setAttribute("confirmedmeal", meal.toString() + "\n" + mealrelations.toString());
+		req.setAttribute("ID", meal.getID());
 	}
 	
 	

@@ -16,11 +16,14 @@
 	
 	<div class="bg-text">
 		<p>${confirmedmeal} has been successfully added to the database!</p>
+		
+		<form action="viewmeal" method="post">
+			<input name="viewpage" class="p1" type="submit" value="View page" />
+			<input type="hidden" name="ID" value="${ID}">
+		</form>
 	</div>
 	
 	<br>
-	
-	<a href="index" class="p1">Return to home</a>
 	
 </body>
 </html>

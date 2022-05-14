@@ -11,6 +11,8 @@ import dev.arnemunthekaas.DB.entity.Meal;
 @Stateless
 public class MealDAO {
 	
+	public static MealDAO mealDAO;
+	
 	@PersistenceContext(name = "mealDB")
 	private EntityManager em;
 

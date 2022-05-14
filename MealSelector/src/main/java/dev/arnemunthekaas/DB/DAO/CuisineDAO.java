@@ -10,6 +10,8 @@ import dev.arnemunthekaas.DB.entity.Cuisine;
 
 @Stateless
 public class CuisineDAO {
+
+	public static CuisineDAO cuisineDAO;
 	
 	@PersistenceContext(name = "mealDB")
 	private EntityManager em;

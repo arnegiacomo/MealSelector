@@ -13,7 +13,6 @@
 <body>
 	<div class="topnav">
 		<a class="active" href="index">Home</a> <a href="database">Database</a>
-		<a href="about">About</a>
 	</div>
 	<div class="bg-image"></div>
 
@@ -43,9 +42,9 @@
 				</fieldset>
 			
 			<fieldset>
-				<legend class="p1">Preperation time</legend>
+				<legend class="p1">Max preperation time</legend>
 				<input class="slider" name="preptime" id="preptime" type="range"
-					min="5" max="120" step="5" value="5">
+					min="5" max="120" step="5" value="60">
 				<p>
 					Preptime: <span id="demo"></span> minutes
 				</p>

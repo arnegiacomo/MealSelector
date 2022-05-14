@@ -2,9 +2,7 @@ package dev.arnemunthekaas.mealview;
 
 import javax.servlet.http.HttpServletRequest;
 
-import dev.arnemunthekaas.DB.DAO.MealDAO;
 import dev.arnemunthekaas.DB.DAO.MealrelationsDAO;
-import dev.arnemunthekaas.DB.entity.Meal;
 import dev.arnemunthekaas.DB.entity.Mealrelations;
 
 public class MealView {
@@ -17,12 +15,19 @@ public class MealView {
 	private String siteurl;
 	private Integer preptime;
 	private int ID;
+	
+	public MealView() {
+		this.name = "No meal found. Please try again with other criteria!";
+		this.imageurl = "https://www.apa.org/images/sad-title-image_tcm7-179953.jpg";
+	}
+	
+	public MealView(HttpServletRequest request) {
+		this(MealrelationsDAO.mealrelationsDAO.find(Integer.parseInt(request.getParameter("ID"))));	
+	}
 
 	public MealView(Mealrelations mealrelations) {
-		if (mealrelations == null) {
-			this.name = "No meal found. Please try again with other criteria!";
-			this.imageurl = "https://www.apa.org/images/sad-title-image_tcm7-179953.jpg";
-		} else {
+			this();
+		if (mealrelations != null) {
 			this.name = mealrelations.getMeal().getName();
 			this.imageurl = mealrelations.getMeal().getImageurl();
 			this.description = mealrelations.getMeal().getDescription();
@@ -34,24 +39,7 @@ public class MealView {
 		}
 	}
 
-	public MealView(HttpServletRequest request, MealrelationsDAO mealrelationDAO) {
-		try {
-			int ID = Integer.parseInt(request.getParameter("ID"));
-			Mealrelations mealrelations = mealrelationDAO.find(ID);
-			this.name = mealrelations.getMeal().getName();
-			this.imageurl = mealrelations.getMeal().getImageurl();
-			this.description = mealrelations.getMeal().getDescription();
-			this.siteurl = mealrelations.getMeal().getSiteurl();
-			this.preptime = mealrelations.getMeal().getPreptime();
-			this.ID = mealrelations.getMeal().getID();
-			this.type = mealrelations.getType().getName();
-			this.cuisine = mealrelations.getCuisine().getName();
-		} catch (Exception e) {
-			this.name = "No meal found. Please try again with other criteria!";
-			this.imageurl = "https://www.apa.org/images/sad-title-image_tcm7-179953.jpg";
-		}
-	}
-
+	
 	public String getName() {
 		return name;
 	}

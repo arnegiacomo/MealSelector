@@ -20,12 +20,11 @@ public class InputHandler {
 	
 	
 
-	public InputHandler(MealDAO mealDAO, CuisineDAO cuisineDAO, TypeDAO typeDAO, MealrelationsDAO mealrelationsDAO,
-			HttpServletRequest req) {
-		this.mealDAO = mealDAO;
-		this.cuisineDAO = cuisineDAO;
-		this.typeDAO = typeDAO;
-		this.mealrelationsDAO = mealrelationsDAO;
+	public InputHandler(HttpServletRequest req) {
+		this.mealDAO = MealDAO.mealDAO;
+		this.cuisineDAO = CuisineDAO.cuisineDAO;
+		this.typeDAO = TypeDAO.typeDAO;
+		this.mealrelationsDAO = MealrelationsDAO.mealrelationsDAO;
 		this.req = req;
 	}
 

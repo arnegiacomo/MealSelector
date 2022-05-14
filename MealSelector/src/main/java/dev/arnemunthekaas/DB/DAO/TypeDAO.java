@@ -11,6 +11,8 @@ import dev.arnemunthekaas.DB.entity.Type;
 @Stateless
 public class TypeDAO {
 	
+	public static TypeDAO typeDAO;
+	
 	@PersistenceContext(name = "mealDB")
 	private EntityManager em;
 	

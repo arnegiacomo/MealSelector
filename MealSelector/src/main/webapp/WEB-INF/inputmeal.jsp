@@ -14,7 +14,6 @@
 <body>
 	<div class="topnav">
 		<a href="index">Home</a> <a class="active" href="database">Database</a>
-		<a href="about">About</a>
 	</div>
 	<div class="bg-image"></div>
 

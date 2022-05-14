@@ -13,8 +13,8 @@ CREATE TABLE meal
     NAME CHARACTER VARYING(100),
 	DESCRIPTION CHARACTER VARYING(100000),
 	PREPTIME SMALLINT,
-	SITEURL CHARACTER VARYING(1000),
-	IMAGEURL CHARACTER VARYING(1000),
+	SITEURL CHARACTER VARYING(100000),
+	IMAGEURL CHARACTER VARYING(100000),
     PRIMARY KEY (ID)
 );
 
@@ -24,7 +24,7 @@ CREATE TABLE meal
 
 INSERT INTO meal(NAME, DESCRIPTION, PREPTIME, SITEURL, IMAGEURL) VALUES
 	('THE BEST HOMEMADE TACOS', 'Homemade Tacos are the perfect busy weeknight dinner. These Easy Ground Beef Tacos are better than take-out and ready in minutes.', 20, 'https://www.thewholesomedish.com/the-best-homemade-tacos/', 'https://www.thewholesomedish.com/wp-content/uploads/2019/06/The-Best-Classic-Tacos-1.jpg'),
-	('Homemade Pizza & Pizza Dough', 'This is a classic homemade pizza recipe, including a pizza dough recipe, topping suggestions, and step-by-step instructions with photos. Make perfect pizza at home!', 150, 'https://www.simplyrecipes.com/recipes/homemade_pizza/', 'https://www.simplyrecipes.com/thmb/mbN8mXZ0srgAT1YrDU61183t0uM=/648x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Homemade-Pizza-Dough-Lead-Shot-1b-ea13798d224048b3a28afb0936c9b645.jpg'),
+	('Homemade Pizza & Pizza Dough', 'This is a classic homemade pizza recipe, including a pizza dough recipe, topping suggestions, and step-by-step instructions with photos. Make perfect pizza at home!', 120, 'https://www.simplyrecipes.com/recipes/homemade_pizza/', 'https://www.simplyrecipes.com/thmb/mbN8mXZ0srgAT1YrDU61183t0uM=/648x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Homemade-Pizza-Dough-Lead-Shot-1b-ea13798d224048b3a28afb0936c9b645.jpg'),
 	('Perfect Burger Recipe (VIDEO)', 'Your new favorite Burger Recipe! There’s nothing like a juicy cheeseburger with fresh crisp toppings on a toasted bun, paired with sweet corn on the cob or potato wedges.', 30, 'https://natashaskitchen.com/perfect-burger-recipe/', 'https://natashaskitchen.com/wp-content/uploads/2019/04/Best-Burger-3-600x900.jpg'),
 	('Easy Overnight Oats', 'This easy overnight oats recipe is a healthy simple breakfast that you can make ahead for busy mornings and customize with many add-ins and toppings!', 5, 'https://feelgoodfoodie.net/recipe/overnight-oats/', 'https://feelgoodfoodie.net/wp-content/uploads/2018/12/Easy-Overnight-Oats-14.jpg'),
 	('QUICK AND EASY FRENCH TOAST', 'With so many toppings and breads there is an endless variety of French toast you can make. Cinnamon French toast, Brioche French toast, stuffed French toast and even a French toast that tastes like a Starbucks caramel macchiato.', 10, 'https://www.mccormick.com/recipes/breakfast-brunch/quick-and-easy-french-toast', 'https://mccormick.widen.net/content/z8hiapwdst/original/quick_and_easy_french_toast_new_800x800.webp'),

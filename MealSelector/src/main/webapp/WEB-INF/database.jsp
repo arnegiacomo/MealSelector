@@ -16,13 +16,12 @@ table.center {
 </head>
 <body>
 	<div class="topnav">
-		<a href="index">Home</a> <a  class="active" href="database">Database</a>
+		<a href="index">Home</a> <a class="active" href="database">Database</a> <a href="inputmeal">Input Meal</a>
 	</div>
 	<div class="bg-image"></div>
 	
 	<div class="bg-text">
 		<h1 class="p1">All meals</h1>
-		<a class="p1" href="inputmeal">Add new meal to database</a>
 		<br>
 		<br>
 		<table class="table">

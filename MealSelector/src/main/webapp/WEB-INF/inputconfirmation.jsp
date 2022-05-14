@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="topnav">
-		<a href="index">Home</a> <a class="active" href="database">Database</a>
+		<a href="index">Home</a> <a href="database">Database</a> <a class="active" href="iputconfirmation">Input Meal</a>
 	</div>
 	<div class="bg-image"></div>
 	

@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div class="topnav">
-		<a href="index">Home</a> <a href="database">Database</a>
+		<a href="index">Home</a> <a href="database">Database</a> <a href="inputmeal">Input Meal</a>
 	</div>
 	<div class="bg-image"></div>
 	

@@ -8,47 +8,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import dev.arnemunthekaas.DB.DAO.MealrelationsDAO;
-import dev.arnemunthekaas.DB.entity.Mealrelations;
 import dev.arnemunthekaas.mealview.MealView;
 
 public class MealSelector {
 
 	public static MealView select(HttpServletRequest req) {
-		try {
-			HttpSession session = req.getSession(false);
-			MealView lastmeal = (MealView) session.getAttribute("lastmeal");
-			SelectorForm form = (SelectorForm) session.getAttribute("form");
-			MealView meal = new MealView();
-			
-			if (form != null) {
+		MealView meal = new MealView();
+
+		HttpSession session = req.getSession(false);
+		MealView lastmeal = (MealView) session.getAttribute("lastmeal");
+		SelectorForm form = (SelectorForm) session.getAttribute("form");
+
+		if (form != null) {
+			meal = select(form);
+
+			while (lastmeal != null && lastmeal.getID() == meal.getID() && filter(getAllMealViews(), form).size() > 1) {
 				meal = select(form);
-				
-				while(lastmeal != null && lastmeal.getID() == meal.getID() && filter(getAllMealViews(), form).size() > 1) {
-					meal = select(form);
-				}
-				
-			} else {
-				meal = roulette(req);
 			}
-			
-			session.setAttribute("lastmeal", meal);
-			return meal;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+		} else {
+			meal = roulette();
 		}
-		return null;
+
+		session.setAttribute("lastmeal", meal);
+		return meal;
+
 	}
 	
 	public static MealView select(SelectorForm form) {
 		return roulette(form);
 	}
-
-	private static List<MealView> filter(List<MealView> list, HttpServletRequest req) {
-		SelectorForm form = new SelectorForm(req);
-		return(filter(list, form));
-	}
-
 
 	private static List<MealView> filter(List<MealView> views, SelectorForm selectorForm) {
 
@@ -70,38 +59,20 @@ public class MealSelector {
 			views = views.stream().filter(m -> m.getPreptime()<=preptime).collect(Collectors.toList());
 		}
 
-		System.out.println(preptime);
-		System.out.println(cuisine);
-		System.out.println(type);	
-		
-		views.forEach(x -> System.out.println(x.toString()));
-
 		return views;
 
 	}
 	
 	public static List<MealView> getAllMealViews() {
-		return getAllMealViews(MealrelationsDAO.mealrelationsDAO.getAll());
-	}
-	
-	private static List<MealView> getAllMealViews(List<Mealrelations> relations) {
 		List<MealView> views = new ArrayList<MealView>();
 		
-		relations.forEach(r -> views.add(new MealView(r)));
+		MealrelationsDAO.mealrelationsDAO.getAll().forEach(r -> views.add(new MealView(r)));
 		
 		return views;
 	}
 	
-	public static List<MealView> getAllFilteredMealViews(HttpServletRequest req) {
-		return filter(getAllMealViews(), req);
-	}
-	
-	public static List<MealView> getAllFilteredMealViews(SelectorForm form) {
-		return filter(getAllMealViews(), form);
-	}
-	
-	private static MealView roulette(HttpServletRequest req) {
-		return roulette((getAllFilteredMealViews(req)));
+	private static MealView roulette() {
+		return roulette(getAllMealViews());
 	}
 	
 	private static MealView roulette(SelectorForm form) {

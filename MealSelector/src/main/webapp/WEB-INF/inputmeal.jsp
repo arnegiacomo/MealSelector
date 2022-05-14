@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="topnav">
-		<a href="index">Home</a> <a class="active" href="database">Database</a>
+		<a href="index">Home</a> <a href="database">Database</a> <a class="active" href="inputmeal">Input Meal</a>
 	</div>
 	<div class="bg-image"></div>
 
@@ -79,7 +79,7 @@
 				<fieldset>
 					<legend class="p1">Preperation time</legend>
 					<input class="slider" name="preptime" id="preptime" type="range"
-						min="5" max="120" step="5" value="5" >
+						min="5" max="120" step="5" value="60" >
 					<p>Preptime: <span id="demo"></span> minutes</p>
 					<span class="errormessage">${preptimeerror}</span>
 
@@ -98,8 +98,9 @@
 					<legend class="p1">URL of image for meal:</legend>
 					<input required type="text" name="imageurl" id="imageurl"
 						value="${imageurlerror}" placeholder="Fill in image url"
-						title="Must be a valid url" required
-						pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)" />
+						title="Must be a valid url" /> 
+<!-- 						required pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"-->
+						 
 					<span class="errormessage">${imageurlerror}</span> <br>
 				</fieldset>
 

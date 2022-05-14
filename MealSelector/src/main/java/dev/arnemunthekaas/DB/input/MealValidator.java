@@ -3,7 +3,8 @@ package dev.arnemunthekaas.DB.input;
 
 public class MealValidator {
 
-	//TODO Simple validator to check for null values, only real validation comes from regex in inputmeal.js
+	//TODO Simple bnack end validator to check for null values, only real validation (right now) comes from regex in inputmeal.js. 
+	// This just checks for null values in case
 	public static boolean validate(InputForm iForm) {
 		return validName(iForm.getName()) && validDescription(iForm.getDescription()) && validType(iForm.getTypeSTR()) && validCuisine(iForm.getCuisineSTR()) && validPreptime(iForm.getPreptime()) && validSiteURL(iForm.getSiteurl()) && validImageURL(iForm.getImageurl());
 	}

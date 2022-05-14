@@ -12,13 +12,12 @@
 </head>
 <body>
 	<div class="topnav">
-		<a class="active" href="index">Home</a> <a href="database">Database</a> <a href="inputmeal">Input Meal</a>
+		<a class="active" href="index">Home</a> <a href="selector">Random meal</a> <a href="database">Database</a> <a href="inputmeal">Input Meal</a>
 	</div>
 	<div class="bg-image"></div>
 
 	<div class="bg-text">
 		<h1 class="p1">MealSelector</h1>
-		<a href="selector" class="p1">Random meal</a> <br /> <br />
 
 		<form action="selector" method="post">
 			<fieldset>

@@ -1,6 +1,6 @@
 # MealSelector 🌮
 Website for random meal selection, with optional filtering parameters. 
-I am a university student that really despises having to come up with meal ideas, so as a personal project I'm making this website to do it for me. 
+I am a university student that really despises having to come up with meal ideas, so as a personal project I'm making this website to do it for me, to run on my raspberry pi on a TomEE server. It is a simple Java Dynamic Web project that connects to a local PostGres database for its food data. It allows for inputing new foods, filtering foods, selecting random foods, and viewing all foods. All food data is persisted to database. 
 
 Technologies used:
 - HTML

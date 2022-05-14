@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div class="topnav">
-		<a href="index">Home</a> <a href="selector">Random meal</a> <a href="database">Database</a> <a href="inputmeal">Input Meal</a>
+		<a href="index">Home</a> <a href="viewmeal">Random meal</a> <a href="database">Database</a> <a href="inputmeal">Input Meal</a>
 	</div>
 	<div class="bg-image"></div>
 	
@@ -24,10 +24,20 @@
 		<h1 class="p1">${meal.getName()}</h1>
 		<h3 class="p1">${meal.getType()}</h3>
 		<p class="p1">${meal.getDescription()}</p>
-		<p class="p1"><a href="${meal.getSiteurl()}">Recipe</a></p>
+		
+		<form action="${meal.getSiteurl()}" method="get">
+			<input name="viewpage" class="p1" type="submit" value="Recipe" />
+		</form>
+		
 		<img src="${meal.getImageurl()}">
-		<p> <a class="p1" href="selector">(Same options)</a>   <a
-			class="p1" href="index">(Other options)</a>   
+			
+		<form action="index" method="get">
+			<input name="viewpage" class="p1" type="submit" value="New search" />
+		</form>
+		
+		<form action="selector" method="post">
+			<input name="viewpage" class="p1" type="submit" value="Same search" />
+		</form>
 	</div>
 </body>
 </html>

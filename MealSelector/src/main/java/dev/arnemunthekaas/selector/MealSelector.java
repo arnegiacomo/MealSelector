@@ -11,32 +11,30 @@ import dev.arnemunthekaas.DB.DAO.MealrelationsDAO;
 import dev.arnemunthekaas.mealview.MealView;
 
 public class MealSelector {
-
+	
+	// TODO: reimplement last meal attribute, so that the same meal doesnt pop up twice
 	public static MealView select(HttpServletRequest req) {
 		MealView meal = new MealView();
 
 		HttpSession session = req.getSession(false);
-		MealView lastmeal = (MealView) session.getAttribute("lastmeal");
 		SelectorForm form = (SelectorForm) session.getAttribute("form");
 
 		if (form != null) {
 			meal = select(form);
 
-			while (lastmeal != null && lastmeal.getID() == meal.getID() && filter(getAllMealViews(), form).size() > 1) {
-				meal = select(form);
-			}
-
 		} else {
 			meal = roulette();
 		}
 
-		session.setAttribute("lastmeal", meal);
 		return meal;
-
 	}
 	
 	public static MealView select(SelectorForm form) {
 		return roulette(form);
+	}
+	
+	public static MealView select() {
+		return roulette();
 	}
 
 	private static List<MealView> filter(List<MealView> views, SelectorForm selectorForm) {

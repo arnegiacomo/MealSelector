@@ -16,14 +16,16 @@ public class SelectorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("meal", MealSelector.select(request));
+		SelectorForm form = new SelectorForm(request);
+		request.setAttribute("meal", MealSelector.select(form));
 		request.getRequestDispatcher("WEB-INF/selector.jsp")
  		.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SelectorForm form = new SelectorForm(request);
+		SelectorForm form = (SelectorForm) request.getSession(false).getAttribute("form");
 		request.setAttribute("meal", MealSelector.select(form));
+		request.setAttribute("post", "true");
 		request.getRequestDispatcher("WEB-INF/selector.jsp")
  		.forward(request, response);
 	}

@@ -16,7 +16,7 @@ table.center {
 </head>
 <body>
 	<div class="topnav">
-		<a href="index">Home</a> <a href="selector">Random meal</a> <a class="active" href="database">Database</a> <a href="inputmeal">Input Meal</a>
+		<a href="index">Home</a> <a href="viewmeal">Random meal</a> <a class="active" href="database">Database</a> <a href="inputmeal">Input Meal</a>
 	</div>
 	<div class="bg-image"></div>
 	
@@ -45,7 +45,9 @@ table.center {
 							<input type="hidden" name="ID" value="${meal.getID()}">
 						</form>
 					</td>
-					<td><a class="p1" href="${meal.getSiteurl()}"> Recipe </a></td>
+					<td><form action="${meal.getSiteurl()}" method="get">
+						<input name="viewpage" class="p1" type="submit" value="Recipe" />
+					</form></td>
 				</tr>
 			</c:forEach>
 		</table>

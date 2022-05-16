@@ -30,7 +30,7 @@ table.center {
 				<th class="p1" align="center"> Type </th>
 				<th class="p1" align="center"> Prep time </th>
 				<th class="p1" align="center"> Page </th>
-				<th class="p1" align="center"> Recipe url </th>
+				<th class="p1" align="center"> Recipe </th>
 			</tr>
 
 			<c:forEach items='${requestScope["meals"]}' var="meal">

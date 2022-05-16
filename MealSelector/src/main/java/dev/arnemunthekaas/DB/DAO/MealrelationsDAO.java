@@ -7,7 +7,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import dev.arnemunthekaas.DB.entity.Cuisine;
 import dev.arnemunthekaas.DB.entity.Meal;
 import dev.arnemunthekaas.DB.entity.Mealrelations;
 
@@ -24,9 +23,9 @@ public class MealrelationsDAO {
 		return allrelations;
 	}
 	
-	public List<Cuisine> getAllCuisines() {
+	public List<String> getAllUniqueCuisineNamesUsed() {
 		List<Mealrelations> allrelations = getAll();
-		return allrelations.stream().map(o -> o.getCuisine()).collect(Collectors.toList());
+		return allrelations.stream().map(o -> o.getCuisine().getName()).distinct().collect(Collectors.toList());
 	}
 	
 	public void addRelation(Mealrelations mealrelations) {

@@ -41,7 +41,7 @@ public class IndexServlet extends HttpServlet {
 		if (session != null) 
 			session.invalidate();
 		
-		request.setAttribute("cuisines", mealrelationsDAO.getAllCuisines());
+		request.setAttribute("cuisines", mealrelationsDAO.getAllUniqueCuisineNamesUsed());
 		request.setAttribute("types", typeDAO.getAll());
 		 request.getRequestDispatcher("WEB-INF/index.jsp")
  		.forward(request, response);

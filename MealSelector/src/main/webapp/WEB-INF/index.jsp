@@ -58,7 +58,7 @@
 								onkeyup="filterFunction()">
 
 							<c:forEach items='${requestScope["cuisines"]}' var="cuisine">
-								<a id="${cuisine.getName()}" onclick="hideDropdown(this.id)">${cuisine.getName()}</a>
+								<a id="${cuisine}" onclick="hideDropdown(this.id)">${cuisine}</a>
 							</c:forEach>
 
 						</div>

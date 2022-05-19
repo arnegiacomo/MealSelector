@@ -1,4 +1,4 @@
-package dev.arnemunthekaas.selector;
+package no.arnemunthekaas.selector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

@@ -1,4 +1,4 @@
-package dev.arnemunthekaas.servlet;
+package no.arnemunthekaas.servlet;
 
 import java.io.IOException;
 
@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dev.arnemunthekaas.DB.DAO.CuisineDAO;
-import dev.arnemunthekaas.DB.DAO.TypeDAO;
-import dev.arnemunthekaas.DB.input.InputHandler;
+import no.arnemunthekaas.DB.DAO.CuisineDAO;
+import no.arnemunthekaas.DB.DAO.TypeDAO;
+import no.arnemunthekaas.DB.input.InputHandler;
 
 @WebServlet(name = "InputMealServlet", urlPatterns = "/inputmeal")
 public class InputMealServlet extends HttpServlet {

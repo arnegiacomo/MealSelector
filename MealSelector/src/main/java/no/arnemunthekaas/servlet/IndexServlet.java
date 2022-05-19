@@ -1,4 +1,4 @@
-package dev.arnemunthekaas.servlet;
+package no.arnemunthekaas.servlet;
 
 import java.io.IOException;
 
@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dev.arnemunthekaas.DB.DAO.CuisineDAO;
-import dev.arnemunthekaas.DB.DAO.MealDAO;
-import dev.arnemunthekaas.DB.DAO.MealrelationsDAO;
-import dev.arnemunthekaas.DB.DAO.TypeDAO;
+import no.arnemunthekaas.DB.DAO.CuisineDAO;
+import no.arnemunthekaas.DB.DAO.MealDAO;
+import no.arnemunthekaas.DB.DAO.MealrelationsDAO;
+import no.arnemunthekaas.DB.DAO.TypeDAO;
 
 @WebServlet(name = "IndexServlet", urlPatterns = "/index")
 public class IndexServlet extends HttpServlet {

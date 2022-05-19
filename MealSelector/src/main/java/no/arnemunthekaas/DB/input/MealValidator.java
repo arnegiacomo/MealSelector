@@ -1,4 +1,4 @@
-package dev.arnemunthekaas.DB.input;
+package no.arnemunthekaas.DB.input;
 
 
 public class MealValidator {

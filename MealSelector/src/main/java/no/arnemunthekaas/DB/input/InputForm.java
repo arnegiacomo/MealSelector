@@ -1,4 +1,4 @@
-package dev.arnemunthekaas.DB.input;
+package no.arnemunthekaas.DB.input;
 
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.text.StringEscapeUtils;

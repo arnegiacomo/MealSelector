@@ -1,13 +1,13 @@
-package dev.arnemunthekaas.DB.input;
+package no.arnemunthekaas.DB.input;
 
 import javax.servlet.http.HttpServletRequest;
 
-import dev.arnemunthekaas.DB.DAO.CuisineDAO;
-import dev.arnemunthekaas.DB.DAO.MealDAO;
-import dev.arnemunthekaas.DB.DAO.MealrelationsDAO;
-import dev.arnemunthekaas.DB.DAO.TypeDAO;
-import dev.arnemunthekaas.DB.entity.Meal;
-import dev.arnemunthekaas.DB.entity.Mealrelations;
+import no.arnemunthekaas.DB.DAO.CuisineDAO;
+import no.arnemunthekaas.DB.DAO.MealDAO;
+import no.arnemunthekaas.DB.DAO.MealrelationsDAO;
+import no.arnemunthekaas.DB.DAO.TypeDAO;
+import no.arnemunthekaas.DB.entity.Meal;
+import no.arnemunthekaas.DB.entity.Mealrelations;
 
 public class InputHandler {
 

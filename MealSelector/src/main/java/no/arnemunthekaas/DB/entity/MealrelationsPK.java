@@ -1,4 +1,4 @@
-package dev.arnemunthekaas.DB.entity;
+package no.arnemunthekaas.DB.entity;
 
 import javax.persistence.Id;
 

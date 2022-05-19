@@ -1,4 +1,4 @@
-package dev.arnemunthekaas.selector;
+package no.arnemunthekaas.selector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import dev.arnemunthekaas.DB.DAO.MealrelationsDAO;
-import dev.arnemunthekaas.mealview.MealView;
+import no.arnemunthekaas.DB.DAO.MealrelationsDAO;
+import no.arnemunthekaas.mealview.MealView;
 
 public class MealSelector {
 	

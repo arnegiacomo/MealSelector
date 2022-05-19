@@ -1,4 +1,4 @@
-package dev.arnemunthekaas.servlet;
+package no.arnemunthekaas.servlet;
 
 import java.io.IOException;
 
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dev.arnemunthekaas.selector.MealSelector;
-import dev.arnemunthekaas.selector.SelectorForm;
+import no.arnemunthekaas.selector.MealSelector;
+import no.arnemunthekaas.selector.SelectorForm;
 
 @WebServlet(name = "SelectorServlet", urlPatterns = "/selector")
 public class SelectorServlet extends HttpServlet {

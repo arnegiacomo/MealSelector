@@ -1,9 +1,9 @@
-package dev.arnemunthekaas.mealview;
+package no.arnemunthekaas.mealview;
 
 import javax.servlet.http.HttpServletRequest;
 
-import dev.arnemunthekaas.DB.DAO.MealrelationsDAO;
-import dev.arnemunthekaas.DB.entity.Mealrelations;
+import no.arnemunthekaas.DB.DAO.MealrelationsDAO;
+import no.arnemunthekaas.DB.entity.Mealrelations;
 
 public class MealView {
 

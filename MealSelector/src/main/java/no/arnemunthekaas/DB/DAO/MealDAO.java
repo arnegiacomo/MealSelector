@@ -1,4 +1,4 @@
-package dev.arnemunthekaas.DB.DAO;
+package no.arnemunthekaas.DB.DAO;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import dev.arnemunthekaas.DB.entity.Meal;
+import no.arnemunthekaas.DB.entity.Meal;
 
 @Stateless
 public class MealDAO {
